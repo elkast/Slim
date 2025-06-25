@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Chambres - Administration Hôtel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="/frontend/styles/style hotelier/style-gestionchambre-hotelier.css">
+
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hotel"></i>
+                </div>
+                <h1>Hôtel Manager</h1>
+            </div>
+            
+            <a href="#" class="nav-item active">
+                <i class="fas fa-bed"></i>
+                <span>Gestion des chambres</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-tags"></i>
+                <span>Tarification</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-images"></i>
+                <span>Galerie Photos</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Localisation</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-concierge-bell"></i>
+                <span>Services</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Statistiques</span>
+            </a>
+            <a href="../hotelier-dashboard.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Paramètres</span>
+            </a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="header-title">
+                    <h1>Gestion des Chambres</h1>
+                    <p>Gérez votre inventaire de chambres et leurs caractéristiques</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Ajouter une chambre
+                    </button>
+                </div>
+            </div>
+
+            <!-- Gestion des Chambres -->
+            <section class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> Liste des Chambres</h2>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Rechercher une chambre...">
+                    </div>
+                </div>
+                
+                <div class="room-grid">
+                    <!-- Chambre 1 -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <div class="room-badge badge-available">Disponible</div>
+                        </div>
+                        <div class="room-info">
+                            <div class="room-type">Suite Deluxe</div>
+                            <div class="room-number">Chambre #201</div>
+                            <div class="room-price">120€ / nuit</div>
+                            <div class="room-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i> 1 lit king size
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-ruler-combined"></i> 45m²
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-wifi"></i> Wi-Fi gratuit
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-tv"></i> TV écran plat
+                                </div>
+                            </div>
+                            <div class="room-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-edit"></i> Modifier
+                                </button>
+                                <button class="btn btn-warning">
+                                    <i class="fas fa-cog"></i> Configurer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chambre 2 -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <div class="room-badge badge-occupied">Occupée</div>
+                        </div>
+                        <div class="room-info">
+                            <div class="room-type">Chambre Standard</div>
+                            <div class="room-number">Chambre #102</div>
+                            <div class="room-price">75€ / nuit</div>
+                            <div class="room-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i> 2 lits simples
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-ruler-combined"></i> 25m²
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-wifi"></i> Wi-Fi gratuit
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-snowflake"></i> Climatisation
+                                </div>
+                            </div>
+                            <div class="room-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-edit"></i> Modifier
+                                </button>
+                                <button class="btn btn-warning">
+                                    <i class="fas fa-cog"></i> Configurer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chambre 3 -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <div class="room-badge badge-maintenance">Maintenance</div>
+                        </div>
+                        <div class="room-info">
+                            <div class="room-type">Suite Présidentielle</div>
+                            <div class="room-number">Chambre #301</div>
+                            <div class="room-price">250€ / nuit</div>
+                            <div class="room-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i> 1 lit king size
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-ruler-combined"></i> 85m²
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-hot-tub"></i> Jacuzzi
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-umbrella-beach"></i> Vue mer
+                                </div>
+                            </div>
+                            <div class="room-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-edit"></i> Modifier
+                                </button>
+                                <button class="btn btn-warning">
+                                    <i class="fas fa-cog"></i> Configurer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chambre 4 -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <div class="room-badge badge-available">Disponible</div>
+                        </div>
+                        <div class="room-info">
+                            <div class="room-type">Chambre Familiale</div>
+                            <div class="room-number">Chambre #205</div>
+                            <div class="room-price">150€ / nuit</div>
+                            <div class="room-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i> 1 lit double + 2 lits simples
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-ruler-combined"></i> 55m²
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-utensils"></i> Petit déjeuner inclus
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-child"></i> Adaptée enfants
+                                </div>
+                            </div>
+                            <div class="room-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-edit"></i> Modifier
+                                </button>
+                                <button class="btn btn-warning">
+                                    <i class="fas fa-cog"></i> Configurer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ajout/Modification de Chambre -->
+            <section class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-plus-circle"></i> Ajouter/Modifier une Chambre</h2>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Numéro de chambre</label>
+                        <input type="text" class="form-control" placeholder="Ex: 201">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Type de chambre</label>
+                        <select class="form-control">
+                            <option>Chambre Standard</option>
+                            <option>Chambre Supérieure</option>
+                            <option>Suite Deluxe</option>
+                            <option>Suite Présidentielle</option>
+                            <option>Chambre Familiale</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Prix par nuit (€)</label>
+                        <input type="number" class="form-control" value="120">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Statut</label>
+                        <select class="form-control">
+                            <option>Disponible</option>
+                            <option>Occupée</option>
+                            <option>En maintenance</option>
+                            <option>Hors service</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Description de la chambre</label>
+                    <textarea class="form-control">Suite spacieuse avec vue sur la mer, équipée d'un lit king size, salle de bain en marbre, TV écran plat 55" et connexion Wi-Fi haut débit.</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Caractéristiques</label>
+                    <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px;">
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" checked> Wi-Fi gratuit
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" checked> Climatisation
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" checked> TV écran plat
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox"> Mini-bar
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox"> Coffre-fort
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox"> Service en chambre
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Photos de la chambre</label>
+                    <div class="image-upload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Glissez-déposez ou cliquez pour télécharger des photos</p>
+                    </div>
+                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <div style="background: linear-gradient(45deg, #3498db, #9b59b6); width: 100%; height: 100%;"></div>
+                            <div class="overlay">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <div style="background: linear-gradient(45deg, #e74c3c, #e67e22); width: 100%; height: 100%;"></div>
+                            <div class="overlay">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <div style="background: linear-gradient(45deg, #2ecc71, #3498db); width: 100%; height: 100%;"></div>
+                            <div class="overlay">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: flex-end; gap: 15px; margin-top: 20px;">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Annuler
+                    </button>
+                    <button class="btn btn-success">
+                        <i class="fas fa-save"></i> Enregistrer la chambre
+                    </button>
+                </div>
+            </section>
+
+            <!-- Tarification et Promotions -->
+            <section class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tags"></i> Tarification et Promotions</h2>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Tarif de base (€/nuit)</label>
+                        <input type="number" class="form-control" value="120">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tarif week-end (+%)</label>
+                        <input type="number" class="form-control" value="15">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tarif haute saison (+%)</label>
+                        <input type="number" class="form-control" value="30">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Promotion actuelle (%)</label>
+                        <input type="number" class="form-control" placeholder="Entrez une réduction">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Période de promotion</label>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+                    <button class="btn btn-primary">Appliquer les tarifs</button>
+                </div>
+            </section>
+
+            <!-- Galerie Photos -->
+            <section class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-images"></i> Galerie Photos</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Ajouter des photos
+                    </button>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div style="background: linear-gradient(45deg, #3498db, #2c3e50); width: 100%; height: 100%;"></div>
+                        <div class="overlay">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div style="background: linear-gradient(45deg, #e74c3c, #c0392b); width: 100%; height: 100%;"></div>
+                        <div class="overlay">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div style="background: linear-gradient(45deg, #2ecc71, #27ae60); width: 100%; height: 100%;"></div>
+                        <div class="overlay">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div style="background: linear-gradient(45deg, #9b59b6, #8e44ad); width: 100%; height: 100%;"></div>
+                        <div class="overlay">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div style="background: linear-gradient(45deg, #f1c40f, #f39c12); width: 100%; height: 100%;"></div>
+                        <div class="overlay">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div style="background: linear-gradient(45deg, #1abc9c, #16a085); width: 100%; height: 100%;"></div>
+                        <div class="overlay">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Localisation -->
+            <section class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-map-marker-alt"></i> Localisation</h2>
+                </div>
+                
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>Localisation de votre établissement</h3>
+                        <p>Placez votre hôtel sur la carte pour une meilleure visibilité</p>
+                        <button class="btn btn-primary" style="margin-top: 20px;">
+                            <i class="fas fa-edit"></i> Modifier la localisation
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Offerts -->
+            <section class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-concierge-bell"></i> Services Offerts</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Ajouter un service
+                    </button>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-wifi"></i>
+                        <h4>Wi-Fi Gratuit</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-swimming-pool"></i>
+                        <h4>Piscine</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-spa"></i>
+                        <h4>Spa & Bien-être</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-utensils"></i>
+                        <h4>Restaurant</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-dumbbell"></i>
+                        <h4>Salle de Sport</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-parking"></i>
+                        <h4>Parking Sécurisé</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-business-time"></i>
+                        <h4>Centre d'affaires</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-child"></i>
+                        <h4>Espace Enfants</h4>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Animation des cartes au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.room-card, .service-card, .content-section');
+            
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 150 * index);
+            });
+            
+            // Animation au survol des boutons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

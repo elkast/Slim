@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Hôtelier - JDJ Immobilier & Hôtellerie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/styles/style hotelier/style-dashboard-hotelier.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-hotel"></i>
+            </div>
+            <h1>Ivoire Hôtelier</h1>
+        </div>
+        
+        <a href="#" class="nav-item active">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Tableau de bord</span>
+        </a>
+        <a href="./gestion de contenu/index.html" class="nav-item">
+            <i class="fas fa-bed"></i>
+            <span>Gestion des chambres</span>
+        </a>
+        <a href="./reservations/index.html" class="nav-item">
+            <i class="fas fa-calendar-check"></i>
+            <span>Réservations</span>
+        </a>
+        <a href="./relation client/index.html" class="nav-item">
+            <i class="fas fa-users"></i>
+            <span>Relations clients</span>
+        </a>
+        <a href="./finances/index.html" class="nav-item">
+            <i class="fas fa-chart-line"></i>
+            <span>Suivi financier</span>
+        </a>
+        <a href="./parametres/index.html" class="nav-item">
+            <i class="fas fa-cog"></i>
+            <span>Paramètres</span>
+        </a>
+        <a href="./marketing/index.html" class="nav-item">
+            <i class="fas fa-bullhorn"></i>
+            <span>Marketing</span>
+        </a>
+        <a href="./employes/index.html" class="nav-item">
+            <i class="fas fa-user-tie"></i>
+            <span>Employés</span>
+        </a>
+        <a href="./localisation/index.html" class="nav-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>Localisation</span>
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <div class="header-title">
+                <h1>Tableau de bord hôtelier</h1>
+                <p>Gérez votre hôtel efficacement avec lOC</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-sync-alt"></i> Actualiser
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon icon-bg-1">
+                    <i class="fas fa-bed"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>42</h3>
+                    <p>Chambres disponibles</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-bg-2">
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>18</h3>
+                    <p>Réservations aujourd'hui</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-bg-3">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>355.000 FCFA</h3>
+                    <p>Revenus du jour</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-bg-4">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>4.7/5</h3>
+                    <p>Note moyenne clients</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gestion des réservations -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-calendar-check"></i> Réservations récentes</h2>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-plus"></i> Nouvelle réservation
+                </button>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Client</th>
+                            <th>Chambre</th>
+                            <th>Dates</th>
+                            <th>Montant</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#H1254</td>
+                            <td>Kouassi Kouadio</td>
+                            <td>Suite Deluxe</td>
+                            <td>15-18 Juin 2023</td>
+                            <td>275,000 FCFA</td>
+                            <td><span class="status status-confirmed">Confirmée</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn"><i class="fas fa-print"></i></button>
+                                <button class="action-btn"><i class="fas fa-qrcode"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#H1253</td>
+                            <td>Adjoua Koffi</td>
+                            <td>Chambre Standard</td>
+                            <td>16-19 Juin 2023</td>
+                            <td>177,000 FCFA</td>
+                            <td><span class="status status-pending">En attente</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-check"></i></button>
+                                <button class="action-btn"><i class="fas fa-times"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#H1252</td>
+                            <td>Yao N'Guessan</td>
+                            <td>Chambre Familiale</td>
+                            <td>12-15 Juin 2023</td>
+                            <td>354,000 FCFA</td>
+                            <td><span class="status status-cancelled">Annulée</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn"><i class="fas fa-redo"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#H1251</td>
+                            <td>Amenan Brou</td>
+                            <td>Suite Présidentielle</td>
+                            <td>10-15 Juin 2023</td>
+                            <td>820,000 FCFA</td>
+                            <td><span class="status status-confirmed">Confirmée</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn"><i class="fas fa-print"></i></button>
+                                <button class="action-btn"><i class="fas fa-qrcode"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Gestion des chambres -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-bed"></i> Gestion des chambres</h2>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Ajouter une chambre
+                </button>
+            </div>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Type de chambre</label>
+                    <select class="form-control">
+                        <option>Chambre Standard</option>
+                        <option>Chambre Supérieure</option>
+                        <option>Suite Deluxe</option>
+                        <option>Suite Présidentielle</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tarif par nuit (FCFA)</label>
+                    <input type="number" class="form-control" value="78000">
+                </div>
+                
+                <div class="form-group">
+                    <label>Nombre de chambres</label>
+                    <input type="number" class="form-control" value="10">
+                </div>
+                
+                <div class="form-group">
+                    <label>Promotion (%)</label>
+                    <input type="number" class="form-control" placeholder="Entrez une réduction">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Description de la chambre</label>
+                <textarea class="form-control">Chambre spacieuse avec vue sur la mer, équipée d'un lit queen size, salle de bain privée, TV écran plat et connexion Wi-Fi gratuite.</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Services inclus</label>
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px;">
+                    <label style="display: flex; align-items: center; gap: 8px;">
+                        <input type="checkbox" checked> Wi-Fi gratuit
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px;">
+                        <input type="checkbox" checked> Petit déjeuner
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px;">
+                        <input type="checkbox"> Service en chambre
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px;">
+                        <input type="checkbox" checked> Climatisation
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px;">
+                        <input type="checkbox"> Mini-bar
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Photos de la chambre</label>
+                <div class="image-upload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Glissez-déposez ou cliquez pour télécharger des photos</p>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: flex-end; gap: 15px; margin-top: 20px;">
+                <button class="btn btn-secondary">Annuler</button>
+                <button class="btn btn-primary">Enregistrer les modifications</button>
+            </div>
+        </div>
+
+        <!-- Suivi financier et statistiques -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-line"></i> Suivi financier</h2>
+                <div>
+                    <select class="form-control" style="display: inline-block; width: auto;">
+                        <option>Mai 2023</option>
+                        <option>Avril 2023</option>
+                        <option>Mars 2023</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+            
+            <div class="form-grid" style="margin-top: 30px;">
+                <div>
+                    <h3 style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-receipt"></i> Factures récentes
+                    </h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N° Facture</th>
+                                <th>Client</th>
+                                <th>Montant</th>
+                                <th>Télécharger</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#INV-2023-056</td>
+                                <td>Kouassi Kouadio</td>
+                                <td>275,000 FCFA</td>
+                                <td><button class="action-btn"><i class="fas fa-download"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-2023-055</td>
+                                <td>Adjoua Koffi</td>
+                                <td>177,000 FCFA</td>
+                                <td><button class="action-btn"><i class="fas fa-download"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-2023-054</td>
+                                <td>Yao N'Guessan</td>
+                                <td>354,000 FCFA</td>
+                                <td><button class="action-btn"><i class="fas fa-download"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div>
+                    <h3 style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-chart-pie"></i> Statistiques de réservation
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="bookingChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paramètres de l'établissement -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-cog"></i> Paramètres de l'établissement</h2>
+            </div>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Heure d'arrivée</label>
+                    <input type="time" class="form-control" value="15:00">
+                </div>
+                
+                <div class="form-group">
+                    <label>Heure de départ</label>
+                    <input type="time" class="form-control" value="11:00">
+                </div>
+                
+                <div class="form-group">
+                    <label>Politique d'annulation</label>
+                    <select class="form-control">
+                        <option>Flexible (remboursement 48h avant)</option>
+                        <option>Modérée (remboursement 7 jours avant)</option>
+                        <option>Stricte (non remboursable)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Mode de paiement</label>
+                    <select class="form-control">
+                        <option>En ligne uniquement</option>
+                        <option>Sur place uniquement</option>
+                        <option>En ligne ou sur place</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Règles de séjour</label>
+                <textarea class="form-control">- Pas d'animaux autorisés
+- Fumeurs uniquement dans les zones désignées
+- Pas de fêtes dans les chambres
+- Respect du couvre-feu à minuit</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Caution requise</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <input type="number" class="form-control" placeholder="Montant de la caution" value="100">
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+                <button class="btn btn-primary">Enregistrer les paramètres</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Charts
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'],
+                datasets: [{
+                    label: 'Revenus (€)',
+                    data: [850, 920, 780, 1100, 950, 1050, 1200, 980, 1150, 1250, 1300, 1400, 1350, 1500, 1450],
+                    borderColor: '#00A699',
+                    backgroundColor: 'rgba(0, 166, 153, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const bookingCtx = document.getElementById('bookingChart').getContext('2d');
+        const bookingChart = new Chart(bookingCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Confirmées', 'En attente', 'Annulées'],
+                datasets: [{
+                    data: [65, 20, 15],
+                    backgroundColor: ['#00A699', '#FFC107', '#F44336']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Toggle sidebar on mobile
+        document.querySelector('.sidebar-toggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('collapsed');
+        });
+    </script>
+</body>
+</html>

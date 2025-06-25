@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Client - dashboardclient Immobilier & Hôtellerie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/styles/style client/style-dashboard-client.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                Immobilier & Hôtellerie
+            </div>
+            <div class="user-info">
+                <div class="notification">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="user-avatar">CL</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="dashboard-header">
+            <div class="welcome-box">
+                <h1>Bienvenue, Client JDJ!</h1>
+                <p>Gérez vos propriétés, réservations et transactions en toute simplicité.</p>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-file-contract"></i> Voir mes contrats
+                </button>
+            </div>
+        </div>
+
+        <!-- Immobilier Section -->
+        <section>
+            <h2 class="section-title">Immobilier</h2>
+            
+            <div class="property-grid">
+                <!-- Immeuble Card -->
+                <div class="property-card animate-delay-1">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Immeuble" class="property-image">
+                    <div class="property-badge">Immeuble</div>
+                    <div class="property-info">
+                        <div class="property-type">
+                            <i class="fas fa-building"></i> Résidence Les Palmiers
+                        </div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Plateau, Abidjan
+                        </div>
+                        
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i> Sécurité: Élevée
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-paint-roller"></i> État: Excellent
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-home"></i> Appartements: 24
+                            </div>
+                        </div>
+                        
+                        <div class="property-status">
+                            <div class="status-dot"></div>
+                            Disponible: 5 appartements à louer
+                        </div>
+                        
+                        <div class="property-price">
+                            Loyer: 250 000 FCFA/mois<br>
+                            Caution: 500 000 FCFA
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="openModal('location')">
+                            <i class="fas fa-file-signature"></i> Louer un appartement
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Maison Card -->
+                <div class="property-card animate-delay-2">
+                    <img src="https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Maison" class="property-image">
+                    <div class="property-badge">À Vendre</div>
+                    <div class="property-info">
+                        <div class="property-type">
+                            <i class="fas fa-home"></i> Villa Moderne
+                        </div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Cocody, Abidjan
+                        </div>
+                        
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-bed"></i> 4 chambres
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bath"></i> 3 salles de bain
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-ruler-combined"></i> 220m²
+                            </div>
+                        </div>
+                        
+                        <div class="property-status">
+                            <div class="status-dot"></div>
+                            Disponible immédiatement
+                        </div>
+                        
+                        <div class="property-price">
+                            85 000 000 FCFA
+                        </div>
+                        
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i> Sécurité: Haute
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-paint-roller"></i> État: Rénové
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="openModal('achat')">
+                            <i class="fas fa-handshake"></i> Acheter cette maison
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Hôtellerie Section -->
+        <section class="hotel-section">
+            <h2 class="section-title">Hôtellerie</h2>
+            
+            <div class="hotel-card">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hôtel" class="hotel-image">
+                <div class="hotel-details">
+                    <h3>Hôtel Le Magnifique</h3>
+                    <div class="property-location">
+                        <i class="fas fa-map-marker-alt"></i> Boulevard Central, Abidjan
+                    </div>
+                    
+                    <div class="hotel-rating">
+                        <div class="stars">
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star-half-alt star"></i>
+                        </div>
+                        <span>4.5/5 (128 avis)</span>
+                    </div>
+                    
+                    <p>Ouvert 24h/24 - 7j/7</p>
+                    
+                    <div class="hotel-features">
+                        <div class="hotel-feature">
+                            <i class="fas fa-broom"></i>
+                            <div>
+                                <div>Nettoyage</div>
+                                <div class="property-location">Journalier, haute qualité</div>
+                            </div>
+                        </div>
+                        <div class="hotel-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <div>Sécurité</div>
+                                <div class="property-location">Surveillance 24/7</div>
+                            </div>
+                        </div>
+                        <div class="hotel-feature">
+                            <i class="fas fa-calendar-check"></i>
+                            <div>
+                                <div>Disponibilité</div>
+                                <div class="property-location">Chambres libres: 12</div>
+                            </div>
+                        </div>
+                        <div class="hotel-feature">
+                            <i class="fas fa-user-shield"></i>
+                            <div>
+                                <div>Politique</div>
+                                <div class="property-location">Annulation gratuite</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="property-price">À partir de 45 000 FCFA/nuit</div>
+                    
+                    <button class="btn btn-secondary" onclick="openModal('hotel')">
+                        <i class="fas fa-concierge-bell"></i> Réserver une chambre
+                    </button>
+                </div>
+            </div>
+            
+            <div class="reservation-form">
+                <h3>Rechercher une disponibilité</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Dates de séjour</label>
+                        <input type="text" class="form-control" placeholder="JJ/MM/AAAA - JJ/MM/AAAA">
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre de personnes</label>
+                        <select class="form-control">
+                            <option>1 personne</option>
+                            <option>2 personnes</option>
+                            <option>3 personnes</option>
+                            <option>4 personnes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Type de chambre</label>
+                        <select class="form-control">
+                            <option>Standard</option>
+                            <option>Supérieure</option>
+                            <option>Suite</option>
+                            <option>Suite Présidentielle</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Durée du séjour</label>
+                        <select class="form-control">
+                            <option>1 nuit</option>
+                            <option>2 nuits</option>
+                            <option>3 nuits</option>
+                            <option>7 nuits</option>
+                            <option>14 nuits</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary">
+                    <i class="fas fa-search"></i> Vérifier la disponibilité
+                </button>
+            </div>
+        </section>
+        
+        <!-- Historique des Transactions -->
+        <section class="history-section">
+            <h2 class="section-title">Historique des Transactions</h2>
+            
+            <div class="history-card">
+                <div class="history-header">
+                    <div class="history-type">
+                        <i class="fas fa-hotel" style="color: var(--secondary-color);"></i>
+                        Réservation Hôtel
+                    </div>
+                    <div class="history-date">15 Juin 2023</div>
+                </div>
+                
+                <div class="history-details">
+                    <div class="history-item">
+                        <span class="history-label">Hôtel</span>
+                        <span class="history-value">Le Magnifique</span>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-label">Chambre</span>
+                        <span class="history-value">Suite Deluxe</span>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-label">Durée</span>
+                        <span class="history-value">3 nuits</span>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-label">Prix total</span>
+                        <span class="history-value">180 000 FCFA</span>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-label">Statut</span>
+                        <span class="history-value" style="color: var(--secondary-color);">Confirmé</span>
+                    </div>
+                </div>
+                
+                <div class="history-actions">
+                    <button class="btn btn-secondary" onclick="openModal('hotel-qr')">
+                        <i class="fas fa-qrcode"></i> Voir QR Code
+                    </button>
+                    <button class="btn">
+                        <i class="fas fa-download"></i> Télécharger le reçu
+                    </button>
+                </div>
+            </div>
+            
+            <div class="history-card">
+                <div class="history-header">
+                    <div class="history-type">
+                        <i class="fas fa-home" style="color: var(--primary-color);"></i>
+                        Location Appartement
+                    </div>
+                    <div class="history-date">5 Mai 2023</div>
+                </div>
+                
+                <div class="history-details">
+                    <div class="history-item">
+                        <span class="history-label">Immeuble</span>
+                        <span class="history-value">Résidence Les Palmiers</span>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-label">Appartement</span>
+                        <span class="history-value">B3 - Étage 2</span>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-label">Durée</span>
+                        <span class="history-value">12 mois</span>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-label">Loyer mensuel</span>
+                        <span class="history-value">250 000 FCFA</span>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-label">Caution</span>
+                        <span class="history-value">500 000 FCFA</span>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-label">Statut</span>
+                        <span class="history-value" style="color: var(--secondary-color);">Actif</span>
+                    </div>
+                </div>
+                
+                <div class="history-actions">
+                    <button class="btn btn-secondary" onclick="openModal('location-qr')">
+                        <i class="fas fa-qrcode"></i> Voir QR Code
+                    </button>
+                    <button class="btn">
+                        <i class="fas fa-file-contract"></i> Voir contrat
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- QR Code Modal -->
+    <div class="modal" id="qr-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title" id="modal-title">Votre QR Code de Réservation</h2>
+            <div class="qr-container">
+                <div class="qr-placeholder">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <p id="modal-description">Présentez ce code QR à la réception pour accéder à votre chambre</p>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Télécharger le QR Code
+                </button>
+                <button class="btn">
+                    <i class="fas fa-print"></i> Imprimer le document
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script href="/frontend/srcripts/script client/script-dashboard-client.js">
+        // Fonctions pour gérer les modals
+        function openModal(type) {
+            const modal = document.getElementById('qr-modal');
+            const title = document.getElementById('modal-title');
+            const description = document.getElementById('modal-description');
+            
+            switch(type) {
+                case 'hotel':
+                    title.textContent = "Réserver une chambre d'hôtel";
+                    description.textContent = "Remplissez le formulaire pour réserver votre séjour";
+                    break;
+                case 'hotel-qr':
+                    title.textContent = "QR Code de Réservation Hôtel";
+                    description.textContent = "Présentez ce code QR à la réception pour accéder à votre chambre";
+                    break;
+                case 'location':
+                    title.textContent = "Louer un Appartement";
+                    description.textContent = "Commencez le processus de location de votre appartement";
+                    break;
+                case 'location-qr':
+                    title.textContent = "QR Code de Location";
+                    description.textContent = "Ce QR Code contient votre contrat de location et vos informations";
+                    break;
+                case 'achat':
+                    title.textContent = "Acheter une Maison";
+                    description.textContent = "Commencez le processus d'achat de votre future maison";
+                    break;
+            }
+            
+            modal.style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('qr-modal').style.display = 'none';
+        }
+        
+        // Fermer la modal en cliquant en dehors
+        window.onclick = function(event) {
+            const modal = document.getElementById('qr-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+        
+        // Animation au scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.property-card, .history-card, .reservation-form').forEach(card => {
+            card.style.animationPlayState = 'paused';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

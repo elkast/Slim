@@ -1,0 +1,199 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panneau d'Administration</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="conteneur">
+        <aside class="barre-laterale">
+            <div class="logo">
+                <h2>Admin</h2>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li class="actif"><a href="#dashboard"><img src="dashboard_icon.png" alt=""> Tableau de Bord</a></li>
+                    <li><a href="#utilisateurs"><img src="users_icon.png" alt=""> Gestion des Utilisateurs</a></li>
+                    <li><a href="#logements"><img src="home_icon.png" alt=""> Modération des Logements</a></li>
+                    <li><a href="#paiements"><img src="payment_icon.png" alt=""> Paiements & Finances</a></li>
+                    <li><a href="#marketing"><img src="marketing_icon.png" alt=""> Marketing & Fidélisation</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="contenu-principal">
+            <header class="en-tete">
+                <h1>Tableau de Bord</h1>
+                <div class="profil-admin">
+                    <span>Admin</span>
+                    <img src="admin_avatar.png" alt="Avatar de l'administrateur">
+                </div>
+            </header>
+
+            <!-- Section Tableau de Bord -->
+            <section id="dashboard" class="page active">
+                <div class="cartes-resume">
+                    <div class="carte">
+                        <h3>Logements Actifs</h3>
+                        <p>1,250</p>
+                    </div>
+                    <div class="carte">
+                        <h3>Réservations (Mois)</h3>
+                        <p>480</p>
+                    </div>
+                    <div class="carte">
+                        <h3>Taux de Satisfaction</h3>
+                        <p>95%</p>
+                    </div>
+                    <div class="carte">
+                        <h3>Incidents Signalés</h3>
+                        <p>12</p>
+                    </div>
+                </div>
+                <div class="graphique-conteneur">
+                    <h3>Réservations par Mois</h3>
+                    <canvas id="graphiqueReservations"></canvas>
+                </div>
+            </section>
+
+            <!-- Section Gestion des Utilisateurs -->
+            <section id="utilisateurs" class="page">
+                <h2>Liste des Utilisateurs</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Type</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jean Dupont</td>
+                            <td>jean.dupont@email.com</td>
+                            <td>Hôte</td>
+                            <td><span class="statut-valide">Validé</span></td>
+                            <td><button class="btn-action">Suspendre</button> <button class="btn-action btn-danger">Bannir</button></td>
+                        </tr>
+                        <tr>
+                            <td>Marie Claire</td>
+                            <td>marie.claire@email.com</td>
+                            <td>Client</td>
+                            <td><span class="statut-actif">Actif</span></td>
+                            <td><button class="btn-action">Suspendre</button></td>
+                        </tr>
+                         <tr>
+                            <td>Paul Martin</td>
+                            <td>paul.martin@email.com</td>
+                            <td>Hôte</td>
+                            <td><span class="statut-attente">En attente</span></td>
+                            <td><button class="btn-action btn-succes">Valider</button> <button class="btn-action btn-danger">Rejeter</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <h2>Signalements</h2>
+                <div class="carte-signalement">
+                    <p><strong>Utilisateur signalé :</strong> Marc Antoine</p>
+                    <p><strong>Motif :</strong> Comportement suspect.</p>
+                    <button class="btn-action">Voir le dossier</button>
+                    <button class="btn-action btn-succes">Marquer comme résolu</button>
+                </div>
+            </section>
+
+            <!-- Section Modération des Logements -->
+            <section id="logements" class="page">
+                <h2>Logements en attente de validation</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Titre de l'annonce</th>
+                            <th>Hôte</th>
+                            <th>Ville</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Superbe villa avec piscine</td>
+                            <td>Alice Bernard</td>
+                            <td>Dakar</td>
+                            <td><button class="btn-action">Vérifier</button> <button class="btn-action btn-succes">Valider</button> <button class="btn-action btn-danger">Rejeter</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <h2>Ajouter un logement recommandé</h2>
+                 <form class="formulaire-simple">
+                     <input type="text" placeholder="ID du logement">
+                     <button type="submit" class="btn-primaire">Ajouter</button>
+                 </form>
+            </section>
+
+            <!-- Section Paiements & Finances -->
+            <section id="paiements" class="page">
+                <h2>Suivi des Transactions Mobile Money</h2>
+                <div class="actions-paiement">
+                     <button class="btn-primaire">Générer un rapport</button>
+                     <button class="btn-secondaire">Débloquer les paiements</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Transaction</th>
+                            <th>Montant</th>
+                            <th>Hôte</th>
+                            <th>Date</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MM-12345678</td>
+                            <td>75.000 XOF</td>
+                            <td>Jean Dupont</td>
+                            <td>2023-10-27</td>
+                            <td><span class="statut-valide">Effectué</span></td>
+                        </tr>
+                        <tr>
+                            <td>MM-98765432</td>
+                            <td>120.000 XOF</td>
+                            <td>Sophie Kante</td>
+                            <td>2023-10-26</td>
+                            <td><span class="statut-attente">En attente</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Section Marketing & Fidélisation -->
+            <section id="marketing" class="page">
+                <h2>Envoyer une Notification Push ou un Email</h2>
+                <form class="formulaire-marketing">
+                    <select>
+                        <option>Notification Push</option>
+                        <option>Email</option>
+                    </select>
+                    <input type="text" placeholder="Titre">
+                    <textarea placeholder="Message..."></textarea>
+                    <button class="btn-primaire">Envoyer</button>
+                </form>
+
+                <h2>Gérer les codes promo / parrainage</h2>
+                <form class="formulaire-simple">
+                     <input type="text" placeholder="Nouveau code promo">
+                     <input type="number" placeholder="Réduction en %">
+                     <button type="submit" class="btn-primaire">Créer le code</button>
+                 </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
