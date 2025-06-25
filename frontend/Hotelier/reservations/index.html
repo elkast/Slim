@@ -1,198 +1,383 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Réservations - Hotelier</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/html5-qrcode"></script>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #e74c3c;
-            --accent-color: #3498db;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-        }
-
-        .reservation-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-            backdrop-filter: blur(4px);
-        }
-
-        .status-badge {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .status-pending {
-            background-color: #ffd700;
-            color: #000;
-        }
-
-        .status-accepted {
-            background-color: #2ecc71;
-            color: #fff;
-        }
-
-        .status-cancelled {
-            background-color: #e74c3c;
-            color: #fff;
-        }
-
-        .reservation-card {
-            border: none;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
-            animation: slideInUp 0.5s ease;
-        }
-
-        .reservation-card:hover {
-            transform: translateY(-5px);
-        }
-
-        #qr-reader {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 1rem;
-            border-radius: 10px;
-            background: var(--accent-color);
-            color: white;
-            animation: slideInRight 0.5s ease;
-        }
-
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/frontend/styles/style hotelier/reservations.css">
 </head>
 <body>
+    <!-- Notification Panel -->
+    <div class="notification-panel" id="notificationPanel">
+        <div class="notification-icon notification-new">
+            <i class="fas fa-bell"></i>
+        </div>
+        <div class="notification-content">
+            <h4>Nouvelle réservation!</h4>
+            <p>Réservation #RES-2023-128 reçue</p>
+        </div>
+    </div>
 
-<div class="col-md-4">
-                  <div class="card feature-card animate-fade-in">
-                      <div class="card-body text-center">
-                          <div class="icon-wrapper">
-                              <i class="fas fa-calendar-check"></i>
-                          </div>
-                          <h3>Réservations</h3>
-                          <ul class="list-unstyled text-start">
-                              <li><i class="fas fa-check text-success"></i> Suivi des réservations (en attente/acceptées/annulées)</li>
-                              <li><i class="fas fa-check text-success"></i> Acceptation/Refus des réservations</li>
-                              <li><i class="fas fa-check text-success"></i> Notifications en temps réel</li>
-                              <li><i class="fas fa-check text-success"></i> Scanner QR Code client</li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-
-    <div class="reservation-container animate__animated animate__fadeIn">
-        <h1 class="text-center mb-5">Gestion des Réservations</h1>
-
-        <!-- Onglets de navigation -->
-        <ul class="nav nav-pills mb-4 justify-content-center" id="reservationTabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="#nouvelles">Nouvelles Réservations</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#encours">En Cours</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#historique">Historique</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#scanner">Scanner QR</a>
-            </li>
-        </ul>
-
-        <!-- Contenu des onglets -->
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="nouvelles">
-                <div class="reservation-card card p-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5>Réservation #12345</h5>
-                            <p class="mb-1">Client: John Doe</p>
-                            <p class="mb-1">Date: 20/12/2023</p>
-                            <span class="status-badge status-pending">En attente</span>
+    <div class="reservation-container">
+        <header>
+            <h1>Gestion des Réservations</h1>
+            <p>Gérez toutes les réservations de votre hôtel en temps réel</p>
+        </header>
+        
+        <div class="tabs-container">
+            <ul class="nav nav-pills justify-content-center" id="reservationTabs">
+                <li class="nav-item position-relative">
+                    <a class="nav-link active" data-bs-toggle="pill" href="#nouvelles">
+                        <i class="fas fa-clock me-2"></i>Nouvelles Réservations
+                        <span class="notification-badge">3</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="pill" href="#encours">
+                        <i class="fas fa-calendar-check me-2"></i>En Cours
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="pill" href="#historique">
+                        <i class="fas fa-history me-2"></i>Historique
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="pill" href="#scanner">
+                        <i class="fas fa-qrcode me-2"></i>Scanner QR
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="tab-content">
+                <!-- Nouvelles Réservations -->
+                <div class="tab-pane fade show active" id="nouvelles">
+                    <div class="filter-section">
+                        <div class="filter-control">
+                            <input type="text" class="form-control" placeholder="Rechercher une réservation...">
                         </div>
-                        <div>
-                            <button class="btn btn-success me-2">Accepter</button>
-                            <button class="btn btn-danger">Refuser</button>
+                        <div class="filter-control">
+                            <select class="form-control">
+                                <option>Toutes les chambres</option>
+                                <option>Chambre Standard</option>
+                                <option>Suite Deluxe</option>
+                                <option>Suite Présidentielle</option>
+                            </select>
+                        </div>
+                        <div class="filter-control">
+                            <select class="form-control">
+                                <option>Toutes les dates</option>
+                                <option>Aujourd'hui</option>
+                                <option>Cette semaine</option>
+                                <option>Ce mois-ci</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="reservation-card animate-fade-in">
+                        <div class="reservation-header">
+                            <div class="reservation-id">Réservation #RES-2023-125</div>
+                            <div class="reservation-status status-pending">En attente</div>
+                        </div>
+                        <div class="reservation-body">
+                            <div class="reservation-detail">
+                                <div class="detail-label">Client</div>
+                                <div class="detail-value">Salomond dibonand</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Chambre</div>
+                                <div class="detail-value">Suite Deluxe (Chambre #201)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Dates</div>
+                                <div class="detail-value">15 - 18 Juin 2023 (3 nuits)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Montant</div>
+                                <div class="detail-value">45000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="reservation-actions">
+                            <button class="btn btn-accept">
+                                <i class="fas fa-check"></i> Accepter
+                            </button>
+                            <button class="btn btn-reject">
+                                <i class="fas fa-times"></i> Refuser
+                            </button>
+                            <button class="btn btn-view">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="reservation-card animate-fade-in">
+                        <div class="reservation-header">
+                            <div class="reservation-id">Réservation #RES-2023-126</div>
+                            <div class="reservation-status status-pending">En attente</div>
+                        </div>
+                        <div class="reservation-body">
+                            <div class="reservation-detail">
+                                <div class="detail-label">Client</div>
+                                <div class="detail-value">Marie </div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Chambre</div>
+                                <div class="detail-value">Chambre Standard (Chambre #102)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Dates</div>
+                                <div class="detail-value">16 - 19 Juin 2023 (3 nuits)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Montant</div>
+                                <div class="detail-value">27000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="reservation-actions">
+                            <button class="btn btn-accept">
+                                <i class="fas fa-check"></i> Accepter
+                            </button>
+                            <button class="btn btn-reject">
+                                <i class="fas fa-times"></i> Refuser
+                            </button>
+                            <button class="btn btn-view">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="reservation-card animate-fade-in">
+                        <div class="reservation-header">
+                            <div class="reservation-id">Réservation #RES-2023-127</div>
+                            <div class="reservation-status status-pending">En attente</div>
+                        </div>
+                        <div class="reservation-body">
+                            <div class="reservation-detail">
+                                <div class="detail-label">Client</div>
+                                <div class="detail-value">Thomas Martin</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Chambre</div>
+                                <div class="detail-value">Chambre Familiale (Chambre #205)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Dates</div>
+                                <div class="detail-value">20 - 25 Juin 2023 (5 nuits)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Montant</div>
+                                <div class="detail-value">75000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="reservation-actions">
+                            <button class="btn btn-accept">
+                                <i class="fas fa-check"></i> Accepter
+                            </button>
+                            <button class="btn btn-reject">
+                                <i class="fas fa-times"></i> Refuser
+                            </button>
+                            <button class="btn btn-view">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="tab-pane fade" id="encours">
-                <!-- Réservations en cours -->
-            </div>
-
-            <div class="tab-pane fade" id="historique">
-                <!-- Historique des réservations -->
-            </div>
-
-            <div class="tab-pane fade" id="scanner">
-                <div id="qr-reader"></div>
+                
+                <!-- Réservations en Cours -->
+                <div class="tab-pane fade" id="encours">
+                    <div class="reservation-card">
+                        <div class="reservation-header">
+                            <div class="reservation-id">Réservation #RES-2023-122</div>
+                            <div class="reservation-status status-accepted">En cours</div>
+                        </div>
+                        <div class="reservation-body">
+                            <div class="reservation-detail">
+                                <div class="detail-label">Client</div>
+                                <div class="detail-value">Kouamé Adjoua</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Chambre</div>
+                                <div class="detail-value">Suite Présidentielle (Chambre #301)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Dates</div>
+                                <div class="detail-value">10 - 15 Juin 2023 (5 nuits)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Montant</div>
+                                <div class="detail-value">820,000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="reservation-actions">
+                            <button class="btn btn-edit">
+                                <i class="fas fa-edit"></i> Modifier
+                            </button>
+                            <button class="btn btn-reject">
+                                <i class="fas fa-times"></i> Annuler
+                            </button>
+                            <button class="btn btn-view">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="reservation-card">
+                        <div class="reservation-header">
+                            <div class="reservation-id">Réservation #RES-2023-123</div>
+                            <div class="reservation-status status-accepted">En cours</div>
+                        </div>
+                        <div class="reservation-body">
+                            <div class="reservation-detail">
+                                <div class="detail-label">Client</div>
+                                <div class="detail-value">Koffi N'Guessan</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Chambre</div>
+                                <div class="detail-value">Chambre Standard (Chambre #105)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Dates</div>
+                                <div class="detail-value">12 - 14 Juin 2023 (2 nuits)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Montant</div>
+                                <div class="detail-value">118,000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="reservation-actions">
+                            <button class="btn btn-edit">
+                                <i class="fas fa-edit"></i> Modifier
+                            </button>
+                            <button class="btn btn-reject">
+                                <i class="fas fa-times"></i> Annuler
+                            </button>
+                            <button class="btn btn-view">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Historique des Réservations -->
+                <div class="tab-pane fade" id="historique">
+                    <div class="reservation-card">
+                        <div class="reservation-header">
+                            <div class="reservation-id">Réservation #RES-2023-120</div>
+                            <div class="reservation-status status-cancelled">Annulée</div>
+                        </div>
+                        <div class="reservation-body">
+                            <div class="reservation-detail">
+                                <div class="detail-label">Client</div>
+                                <div class="detail-value">Yao Amenan</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Chambre</div>
+                                <div class="detail-value">Suite Deluxe (Chambre #203)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Dates</div>
+                                <div class="detail-value">5 - 8 Juin 2023 (3 nuits)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Montant</div>
+                                <div class="detail-value">295,000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="reservation-actions">
+                            <button class="btn btn-view">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scanner QR -->
+                <div class="tab-pane fade" id="scanner">
+                    <div class="qr-section">
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <p class="qr-instructions">
+                            Scanner le QR code d'une réservation pour afficher les détails et confirmer l'arrivée du client.
+                            Placez le code QR devant la caméra pour commencer la lecture.
+                        </p>
+                    </div>
+                    
+                    <div class="reservation-card" id="scannedReservation" style="display: none;">
+                        <div class="reservation-header">
+                            <div class="reservation-id">Réservation #RES-2023-124</div>
+                            <div class="reservation-status status-accepted">En cours</div>
+                        </div>
+                        <div class="reservation-body">
+                            <div class="reservation-detail">
+                                <div class="detail-label">Client</div>
+                                <div class="detail-value">Marc Dubois</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Chambre</div>
+                                <div class="detail-value">Chambre Standard (Chambre #107)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Dates</div>
+                                <div class="detail-value">12 - 15 Juin 2023 (3 nuits)</div>
+                            </div>
+                            <div class="reservation-detail">
+                                <div class="detail-label">Montant</div>
+                                <div class="detail-value">27000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="reservation-actions">
+                            <button class="btn btn-accept">
+                                <i class="fas fa-check"></i> Confirmer l'arrivée
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Initialisation du scanner QR
-        function onScanSuccess(decodedText, decodedResult) {
-            console.log(`Code scanné: ${decodedText}`);
-            showNotification(`Réservation ${decodedText} validée`);
-        }
-
-        function onScanFailure(error) {
-            console.warn(`Erreur de scan: ${error}`);
-        }
-
-        // Notification en temps réel
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.textContent = message;
-            document.body.appendChild(notification);
-
+        // Simuler une notification de nouvelle réservation
+        setTimeout(() => {
+            document.getElementById('notificationPanel').classList.add('show');
+            
             setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
-
-        // Initialisation du scanner QR quand l'onglet est actif
+                document.getElementById('notificationPanel').classList.remove('show');
+            }, 5000);
+        }, 2000);
+        
+        // Simuler le scan d'un QR code
         document.querySelector('a[href="#scanner"]').addEventListener('click', () => {
             setTimeout(() => {
-                const html5QrcodeScanner = new Html5QrcodeScanner(
-                    "qr-reader", { fps: 10, qrbox: { width: 250, height: 250 } }
-                );
-                html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+                // Simuler un délai de scan
+                setTimeout(() => {
+                    document.getElementById('scannedReservation').style.display = 'block';
+                }, 1500);
             }, 100);
+        });
+        
+        // Animation des éléments
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-fade-in');
+            
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+            });
+            
+            setTimeout(() => {
+                animateElements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, 150 * index);
+                });
+            }, 300);
         });
     </script>
 </body>
