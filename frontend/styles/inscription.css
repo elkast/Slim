@@ -1,0 +1,327 @@
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #6c5ce7;
+    --secondary-color: #a29bfe;
+    --accent-color: #fd79a8;
+    --text-color: #2d3436;
+    --light-gray: #f5f6fa;
+    --medium-gray: #dfe6e9;
+    --dark-gray: #636e72;
+    --error-color: #d63031;
+    --success-color: #00b894;
+    --warning-color: #fdcb6e;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Container principal */
+.auth-container {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 28rem;
+    position: relative;
+    animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    transition: transform 0.3s ease;
+}
+
+.auth-container:hover {
+    transform: translateY(-0.5rem);
+}
+
+/* En-tête */
+.auth-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    transform: rotate(30deg);
+}
+
+.auth-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.auth-header p {
+    opacity: 0.9;
+    font-size: 0.875rem;
+    font-weight: 400;
+    position: relative;
+}
+
+/* Formulaire */
+.auth-form {
+    padding: 2rem 2rem 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.form-group:focus-within label {
+    color: var(--primary-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--medium-gray);
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+}
+
+.form-group input::placeholder {
+    color: var(--dark-gray);
+    opacity: 0.6;
+}
+
+/* Icônes et effets */
+.form-group .input-icon {
+    position: absolute;
+    right: 1rem;
+    top: 2.5rem;
+    color: var(--dark-gray);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.form-group:focus-within .input-icon {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+/* Bouton d'inscription */
+.btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    margin-bottom: 1rem;
+    box-shadow: 0 0.25rem 1.5rem rgba(108, 92, 231, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.5rem 2rem rgba(108, 92, 231, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover::after {
+    opacity: 1;
+}
+
+/* Lien supplémentaire */
+.auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--dark-gray);
+}
+
+.auth-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.auth-footer a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Messages d'erreur et succès */
+.alert-message {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    border-left: 0.25rem solid;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.error-message {
+    background: rgba(214, 48, 49, 0.1);
+    color: var(--error-color);
+    border-left-color: var(--error-color);
+}
+
+.success-message {
+    background: rgba(0, 184, 148, 0.1);
+    color: var(--success-color);
+    border-left-color: var(--success-color);
+}
+
+/* Force des mots de passe */
+.password-strength {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.strength-indicator {
+    height: 0.25rem;
+    border-radius: 0.125rem;
+    flex-grow: 1;
+    background: var(--medium-gray);
+    overflow: hidden;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.strength-weak .strength-bar {
+    width: 33%;
+    background: var(--error-color);
+}
+
+.strength-medium .strength-bar {
+    width: 66%;
+    background: var(--warning-color);
+}
+
+.strength-strong .strength-bar {
+    width: 100%;
+    background: var(--success-color);
+}
+
+/* Animation d'entrée */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation de flottement */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-0.5rem);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 1.5rem;
+    }
+    
+    .auth-container {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .auth-header {
+        padding: 2rem 1rem;
+    }
+    
+    .auth-form {
+        padding: 1.5rem;
+    }
+}
+
+/* Effets de focus accessibles */
+*:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}

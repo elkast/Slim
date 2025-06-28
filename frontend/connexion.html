@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/connexion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Formulaire de Connexion -->
+        <div id="login-form" class="form-visible">
+            <div class="auth-header">
+                <h1>Connexion</h1>
+                <p>Connectez-vous à votre compte</p>
+            </div>
+            
+            <form class="auth-form" id="loginForm">
+                <!-- Messages d'erreur/succès -->
+                <div id="login-message" class="message-container" style="display: none;"></div>
+                
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="login-email" name="email" placeholder="votre@email.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Mot de passe</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="login-password" name="password" placeholder="Votre mot de passe" required>
+                    </div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember-me" name="remember">
+                    <label for="remember-me">Se souvenir de moi</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    Se connecter
+                </button>
+                
+                <div class="auth-links">
+                    <a href="#" id="forgot-password">Mot de passe oublié ?</a>
+                </div>
+                
+                <div class="auth-toggle">
+                    <p>Vous n'avez pas de compte ?</p>
+                    <button type="button" id="show-register">Créer un compte</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

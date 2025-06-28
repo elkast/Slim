@@ -3,94 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - CRHCI | Réservation d'Hôtels en Côte d'Ivoire</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../frontend/styles/auth.css">
+    <title>Inscription & Connexion - Slim</title>
+    <link rel="stylesheet" href="styles/inscription.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">
-                <i class="fas fa-hotel"></i>
+<body>   
+    <main class="auth-container">
+        <!-- Formulaire d'Inscription -->
+        <div id="register-form" class="form-hidden">
+            <div class="auth-header">
+                <h1>Inscription</h1>
+                <p>Créez votre compte gratuitement</p>
             </div>
-            <h1>Inscription</h1>
-            <p class="subtitle">Créez votre compte pour réserver</p>
-            <p class="location">
-                <span class="flag-ci"></span>
-                <i class="fas fa-map-marker-alt"></i>
-                Côte d'Ivoire
-            </p>
-        </div>
-
-        <main>
-            <!-- Formulaire d'inscription -->
-            <form class="inscription-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="nom">Nom <span class="required">*</span></label>
-                    <input type="text" id="nom" name="nom" required placeholder="Votre nom de famille">
-                </div>
-
-                <div class="form-group">
-                    <label for="prenom">Prénom <span class="required">*</span></label>
-                    <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom">
-                </div>
-
-                <div class="form-group">
-                    <label for="telephone">Numéro de téléphone <span class="required">*</span></label>
-                    <input type="tel" id="telephone" name="telephone" required placeholder="+225 XX XX XX XX XX">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Adresse email <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" required placeholder="votre@email.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="mot-de-passe">Mot de passe <span class="required">*</span></label>
-                    <input type="password" id="mot-de-passe" name="mot-de-passe" required placeholder="Minimum 8 caractères">
-                </div>
-
-                <div class="form-group">
-                    <label for="confirmer-mot-de-passe">Confirmer le mot de passe <span class="required">*</span></label>
-                    <input type="password" id="confirmer-mot-de-passe" name="confirmer-mot-de-passe" required placeholder="Confirmez votre mot de passe">
-                </div>
-
-                <div class="form-group">
-                    <label for="profile">Type de profil <span class="required">*</span></label>
-                    <select id="profile" name="profile" required>
-                        <option value="">Sélectionnez votre profil</option>
-                        <option value="client">Client</option>
-                        <option value="hotelier">Hôtelier</option>
-                    </select>
-                    </div>
+            
+            <form class="auth-form" id="registerForm" method="POST" action="/backend/Authentification/inscription.php">
+                <div id="register-message" class="message-container" style="display: none;"></div>
                 
-                  <button type="submit" name="btn" class="btn-inscription" style="background-color: #007bff; color: white; padding: 12px 24px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 10px; margin: 20px auto; transition: background-color 0.3s ease;">
-                      <i class="fas fa-user-plus"></i>
-                      Créer mon compte
-                  </button>
+                <div class="form-group">
+                    <label for="register-nom">Nom</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="register-nom" name="nom" placeholder="Votre nom" required>
+                    </div>
+                </div>
 
-                  <script>
-                      function redirectBasedOnProfile(event) {
-                          event.preventDefault();
-                          const profileSelect = document.getElementById('profile');
-                          const selectedProfile = profileSelect.value;
-                        
-                          if (selectedProfile === 'client') {
-                              window.location.href = './Client/client-dashboard.html';
-                          } else if (selectedProfile === 'hotelier') {
-                              window.location.href = './Hotelier/hotelier-dashboard.html';
-                          }
-                      }
-                  </script>
+                <div class="form-group">
+                    <label for="register-prenom">Prénom</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="register-prenom" name="prenom" placeholder="Votre prénom" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="register-email" name="email" placeholder="votre@email.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-password">Mot de passe</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="register-password" name="password" placeholder="Choisissez un mot de passe" required>
+                    </div>
+                    <div class="password-strength" id="password-strength"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-confirm-password">Confirmer le mot de passe</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="register-confirm-password" name="confirm_password" placeholder="Confirmez votre mot de passe" required>
+                    </div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="accept-terms" name="terms" required>
+                    <label for="accept-terms">J'accepte les <a href="#" style="color: #667eea;">conditions d'utilisation</a></label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Créer mon compte</button>
+                
+                <div class="auth-toggle">
+                    <p>Vous avez déjà un compte ?</p>
+                    <button type="button" id="show-login">Se connecter</button>
+                </div>
             </form>
+        </div>
+    </main>
 
-            <!-- Lien vers la connexion -->
-             
-            <div class="lien-connexion">
-                <p>Vous avez déjà un compte ? <a href="./connection.html">Se connecter</a></p>
-            </div>
-            </div>
-        </main>
-    </div>
+    <script src="js/auth.js"></script>
 </body>
 </html>
